@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Bug {
@@ -11,6 +11,9 @@ export class Bug {
     @Column()
     description: string;
 
-    @Column()
-    creationDate: number;
+    @CreateDateColumn()
+    crDate: Date;
+
+    @UpdateDateColumn()
+    leDate: Date;
 }

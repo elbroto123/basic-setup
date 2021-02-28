@@ -17,8 +17,17 @@ export class BugController {
         return this.bugRepository.save(request.body);
     }
 
+    async update(request: Request, response: Response, next: NextFunction) {
+        let bugToUpdate = await this.bugRepository.findOne(request.params.id);
+        const reqbugToUpdate = request.body;
+        bugToUpdate.name = reqbugToUpdate.name;
+        bugToUpdate.description = reqbugToUpdate.description;
+        return this.bugRepository.save(bugToUpdate);
+    }
+
     async remove(request: Request, response: Response, next: NextFunction) {
         const bugToRemove = await this.bugRepository.findOne(request.params.id);
-        await this.bugRepository.remove(bugToRemove);
+        console.log(bugToRemove);
+        return this.bugRepository.remove(bugToRemove);
     }
 }

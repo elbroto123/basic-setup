@@ -48,6 +48,12 @@ export const Routes = [
         action: 'save',
     },
     {
+        method: 'put',
+        route: '/bugs/:id',
+        controller: BugController,
+        action: 'update',
+    },
+    {
         method: 'delete',
         route: '/bugs/:id',
         controller: BugController,
